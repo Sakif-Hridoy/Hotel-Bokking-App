@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Book from './components/Book/Book';
 import Header from './components/Header/Header';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 export const UserContext = createContext();
@@ -27,9 +28,9 @@ const [loggedInUser,setLoggedInUser] = useState({});
             <Route path="/login">
               <Login />
             </Route>
-            {/* <PrivateRoute path="/book/:bedType">
+            <PrivateRoute path="/book/:bedType">
               <Book />
-            </PrivateRoute> */}
+            </PrivateRoute>
             <Route exact path="/">
               <Home />
             </Route>
