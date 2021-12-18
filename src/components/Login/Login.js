@@ -25,6 +25,7 @@ const { from } = location.state || { from: { pathname: "/" } };
       const {displayName, email}= result.user;
       const signedInUser = {name:displayName,email:email};
       setLoggedInUser(signedInUser);
+      storeAuthToken();
       history.replace(from);
       console.log(signedInUser);
     /** @type {firebase.auth.OAuthCredential} */
@@ -45,6 +46,18 @@ const { from } = location.state || { from: { pathname: "/" } };
     var credential = error.credential;
     // ...
   });
+      }
+
+      const storeAuthToken = ()=>{
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+        .then(function(idToken) {
+          sessionStorage.setItem('token',idToken);
+          console.log(idToken)
+          // Send token to your backend via HTTPS
+          // ...
+        }).catch(function(error) {
+          // Handle error
+        });
       }
     
     return (
