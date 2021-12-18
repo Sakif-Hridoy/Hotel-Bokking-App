@@ -1,12 +1,16 @@
 import React ,{ useState ,useEffect} from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 
 const Bookings = () => {
     const [bookings,setBookings] = useState([]);
+    const [loggedInUser,setLoggedInUser] = useContext(UserContext);
+
 
     useEffect(()=>{
-        fetch('http://localhost:5000/bookings')
+        fetch('http://localhost:5000/bookings?email='+loggedInUser.email)
         .then(res=>res.json())
-        .then(data=> setBookings(data))
+        .then(data=> setBookings(data));
     },[])
     return (
         <div>
