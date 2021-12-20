@@ -10,10 +10,13 @@ const Bookings = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/bookings?email='+loggedInUser.email,{
             method:'GET',
+            // headers may be contains both server and clients data,req,response
             headers:{'Content-Type': 'application/json',
+            // Its a dynamic system to secure a users data via token
             authorization:`Bearer ${sessionStorage.getItem('token')}`
         }
         })
+
         .then(res=>res.json())
         .then(data=> setBookings(data));
     },[])
