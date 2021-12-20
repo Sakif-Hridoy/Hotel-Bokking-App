@@ -6,7 +6,7 @@ const Bookings = () => {
     const [bookings,setBookings] = useState([]);
     const [loggedInUser,setLoggedInUser] = useContext(UserContext);
 
-
+// Methods to read/detect "Token" from the back end to secure/prevent anonymous login
     useEffect(()=>{
         fetch('http://localhost:5000/bookings?email='+loggedInUser.email,{
             method:'GET',
