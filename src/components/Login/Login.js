@@ -47,7 +47,9 @@ const { from } = location.state || { from: { pathname: "/" } };
     // ...
   });
       }
-
+// Firebase Auth with JWT Token
+// Firebase Administration Work
+// Retrieve ID tokens on clients
       const storeAuthToken = ()=>{
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
         .then(function(idToken) {
