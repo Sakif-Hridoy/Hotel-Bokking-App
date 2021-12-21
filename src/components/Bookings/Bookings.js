@@ -7,13 +7,13 @@ const Bookings = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     // Methods to read/detect "Token" from the back end to secure/prevent anonymous login
+    // headers may be contains both server and clients data,req,response
+    // Its a dynamic system to secure a users data via token
     useEffect(() => {
         fetch('http://localhost:5000/bookings?email=' + loggedInUser.email, {
             method: 'GET',
-            // headers may be contains both server and clients data,req,response
             headers: {
                 'Content-Type': 'application/json',
-                // Its a dynamic system to secure a users data via token
                 authorization: `Bearer ${sessionStorage.getItem('token')}`
             }
         })
